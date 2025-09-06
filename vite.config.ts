@@ -1,11 +1,15 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import { join, resolve } from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss()
-  ],
-})
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@api': resolve(join(__dirname, 'src', 'api')),
+      '@hooks': resolve(join(__dirname, 'src', 'hooks')),
+    },
+  },
+});
